@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Terminal</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="terminal-container">
+    <!-- Title Bar -->
+    <div class="title-bar">
+      <div class="title-bar-text">
+        <i class="fa-solid fa-terminal"></i>
+        <span>HTML Terminal</span>
+      </div>
+      <div class="window-controls">
+        <button class="window-control minimize" title="Minimize">
+          <i class="fa-solid fa-window-minimize"></i>
+        </button>
+        <button class="window-control maximize" title="Maximize">
+          <i class="fa-regular fa-window-maximize"></i>
+        </button>
+        <button class="window-control close" title="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <div class="tabs-container" id="tabsContainer">
+        <!-- Tabs will be added here dynamically -->
+      </div>
+      <button class="new-tab-button" id="newTabButton" title="New Tab">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      <div class="tab-dropdown">
+        <button class="tab-dropdown-button" title="More options">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="tab-dropdown-content">
+          <a href="#" id="settingsButton">Settings</a>
+          <a href="#" id="colorSchemeButton">Color Schemes</a>
+          <a href="#" id="aboutButton">About</a>
+          <a href="#" id="toolsButton">Tools</a>
+          <a href="#" id="extensionsButton">Extensions</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminal Content Area -->
+    <div class="terminal-content" id="terminalContent">
+      <!-- Terminal instances will be added here dynamically -->
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+      <div class="settings-header">
+        <h2>Settings</h2>
+        <button class="close-settings" id="closeSettings">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="settings-content">
+        <div class="settings-section">
+          <h3>Appearance</h3>
+          <div class="setting-item">
+            <label for="fontSizeSelect">Font Size</label>
+            <select id="fontSizeSelect">
+              <option value="12">12px</option>
+              <option value="14" selected>14px</option>
+              <option value="16">16px</option>
+              <option value="18">18px</option>
+              <option value="20">20px</option>
+              <option value="22">22px</option>
+              <option value="24">24px</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label for="fontFamilySelect">Font Family</label>
+            <select id="fontFamilySelect">
+              <option value="'Cascadia Code', monospace" selected>Cascadia Code</option>
+              <option value="'Consolas', monospace">Consolas</option>
+              <option value="'Courier New', monospace">Courier New</option>
+              <option value="'Fira Code', monospace">Fira Code</option>
+              <option value="'Source Code Pro', monospace">Source Code Pro</option>
+              <option value="'JetBrains Mono', monospace">JetBrains Mono</option>
+              <option value="'Roboto Mono', monospace">Roboto Mono</option>
+              <option value="'Ubuntu Mono', monospace">Ubuntu Mono</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label for="opacityRange">Background Opacity</label>
+            <input type="range" id="opacityRange" min="0.3" max="1" step="0.05" value="0.95">
+            <span id="opacityValue">95%</span>
+          </div>
+          <div class="setting-item">
+            <label for="blurRange">Background Blur</label>
+            <input type="range" id="blurRange" min="0" max="20" step="1" value="0">
+            <span id="blurValue">0px</span>
+          </div>
+          <div class="setting-item">
+            <label for="borderRadiusRange">Border Radius</label>
+            <input type="range" id="borderRadiusRange" min="0" max="20" step="1" value="0">
+            <span id="borderRadiusValue">0px</span>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="glassEffectToggle">
+            <label for="glassEffectToggle">Glass Effect</label>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Color Scheme</h3>
+          <div class="color-schemes">
+            <div class="color-scheme-item" data-scheme="default">
+              <div class="color-preview default-scheme"></div>
+              <span>Default</span>
+            </div>
+            <div class="color-scheme-item" data-scheme="powershell">
+              <div class="color-preview powershell-scheme"></div>
+              <span>PowerShell</span>
+            </div>
+            <div class="color-scheme-item" data-scheme="ubuntu">
+              <div class="color-preview ubuntu-scheme"></div>
+              <span>Ubuntu</span>
+            </div>
+            <div class="color-scheme-item" data-scheme="matrix">
+              <div class="color-preview matrix-scheme"></div>
+              <span>Matrix</span>
+            </div>
+            <div class="color-scheme-item" data-scheme="light">
+              <div class="color-preview light-scheme"></div>
+              <span>Light</span>
+            </div>
+            <div class="color-scheme-item" data-scheme="cyberpunk">
+              <div class="color-preview cyberpunk-scheme"></div>
+              <span>Cyberpunk</span>
+            </div>
+            <div class="color-scheme-item" data-scheme="dracula">
+              <div class="color-preview dracula-scheme"></div>
+              <span>Dracula</span>
+            </div>
+            <div class="color-scheme-item" data-scheme="nord">
+              <div class="color-preview nord-scheme"></div>
+              <span>Nord</span>
+            </div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Terminal Behavior</h3>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="cursorBlinkToggle" checked>
+            <label for="cursorBlinkToggle">Cursor Blink</label>
+          </div>
+          <div class="setting-item">
+            <label for="cursorStyleSelect">Cursor Style</label>
+            <select id="cursorStyleSelect">
+              <option value="block">Block</option>
+              <option value="bar" selected>Bar</option>
+              <option value="underline">Underline</option>
+            </select>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="bellSoundToggle" checked>
+            <label for="bellSoundToggle">Bell Sound</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="confirmCloseToggle" checked>
+            <label for="confirmCloseToggle">Confirm Close</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="particleEffectsToggle" checked>
+            <label for="particleEffectsToggle">Particle Effects</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="typingSoundToggle">
+            <label for="typingSoundToggle">Typing Sound</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="scanlineEffectToggle" checked>
+            <label for="scanlineEffectToggle">Scanline Effect</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="autoSuggestToggle" checked>
+            <label for="autoSuggestToggle">Command Auto-Suggest</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="tabCompletionToggle" checked>
+            <label for="tabCompletionToggle">Tab Completion</label>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Advanced</h3>
+          <div class="setting-item">
+            <label for="maxHistorySelect">Command History Size</label>
+            <select id="maxHistorySelect">
+              <option value="50">50 commands</option>
+              <option value="100" selected>100 commands</option>
+              <option value="200">200 commands</option>
+              <option value="500">500 commands</option>
+              <option value="1000">1000 commands</option>
+            </select>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="autoCompleteToggle" checked>
+            <label for="autoCompleteToggle">Auto-Complete Commands</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="syntaxHighlightToggle" checked>
+            <label for="syntaxHighlightToggle">Syntax Highlighting</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="autoScrollToggle" checked>
+            <label for="autoScrollToggle">Auto-Scroll to Bottom</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="saveHistoryToggle" checked>
+            <label for="saveHistoryToggle">Save Command History</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="multilineInputToggle">
+            <label for="multilineInputToggle">Multiline Input (Ctrl+Enter)</label>
+          </div>
+          <div class="setting-item">
+            <label for="promptStyleSelect">Prompt Style</label>
+            <select id="promptStyleSelect">
+              <option value="windows" selected>Windows (C:\Users\User>)</option>
+              <option value="bash">Bash (user@host:~$)</option>
+              <option value="powershell">PowerShell (PS C:\Users\User>)</option>
+              <option value="minimal">Minimal (>)</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div class="setting-item" id="customPromptContainer" style="display: none;">
+            <label for="customPromptInput">Custom Prompt</label>
+            <input type="text" id="customPromptInput" placeholder="Enter custom prompt...">
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Performance</h3>
+          <div class="setting-item">
+            <label for="maxOutputLinesSelect">Max Output Lines</label>
+            <select id="maxOutputLinesSelect">
+              <option value="500">500 lines</option>
+              <option value="1000" selected>1000 lines</option>
+              <option value="5000">5000 lines</option>
+              <option value="10000">10000 lines</option>
+              <option value="unlimited">Unlimited</option>
+            </select>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="hardwareAccelerationToggle" checked>
+            <label for="hardwareAccelerationToggle">Hardware Acceleration</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="smoothScrollingToggle" checked>
+            <label for="smoothScrollingToggle">Smooth Scrolling</label>
+          </div>
+          <div class="setting-item">
+            <label for="animationSpeedSelect">Animation Speed</label>
+            <select id="animationSpeedSelect">
+              <option value="0">Off</option>
+              <option value="0.1">Fast</option>
+              <option value="0.2" selected>Normal</option>
+              <option value="0.4">Slow</option>
+            </select>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Accessibility</h3>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="highContrastToggle">
+            <label for="highContrastToggle">High Contrast Mode</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="reducedMotionToggle">
+            <label for="reducedMotionToggle">Reduced Motion</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="screenReaderOptimizedToggle">
+            <label for="screenReaderOptimizedToggle">Screen Reader Optimized</label>
+          </div>
+          <div class="setting-item">
+            <label for="lineHeightSelect">Line Height</label>
+            <select id="lineHeightSelect">
+              <option value="1.2">Compact (1.2)</option>
+              <option value="1.5" selected>Normal (1.5)</option>
+              <option value="1.8">Relaxed (1.8)</option>
+              <option value="2.0">Spacious (2.0)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="settings-footer">
+        <button id="saveSettings" class="settings-button primary">Save</button>
+        <button id="exportSettings" class="settings-button">Export</button>
+        <button id="importSettings" class="settings-button">Import</button>
+        <button id="resetSettings" class="settings-button">Reset to Default</button>
+      </div>
+    </div>
+
+    <!-- Color Scheme Panel -->
+    <div class="color-scheme-panel" id="colorSchemePanel">
+      <div class="color-scheme-header">
+        <h2>Color Schemes</h2>
+        <button class="close-color-scheme" id="closeColorScheme">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="color-scheme-content">
+        <div class="scheme-preview">
+          <div class="scheme-preview-terminal">
+            <div class="preview-line">
+              <span class="preview-prompt">C:\Users\User></span>
+              <span class="preview-command">dir</span>
+            </div>
+            <div class="preview-output">
+              <div class="preview-directory">Directory of C:\Users\User</div>
+              <div class="preview-file">file.txt</div>
+              <div class="preview-file">document.docx</div>
+              <div class="preview-folder">Downloads</div>
+              <div class="preview-folder">Documents</div>
+            </div>
+            <div class="preview-line">
+              <span class="preview-prompt">C:\Users\User></span>
+              <span class="preview-cursor"></span>
+            </div>
+          </div>
+        </div>
+        <div class="scheme-list">
+          <div class="scheme-item active" data-scheme="default">
+            <span>Default</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="powershell">
+            <span>PowerShell</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="ubuntu">
+            <span>Ubuntu</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="matrix">
+            <span>Matrix</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="light">
+            <span>Light</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="cyberpunk">
+            <span>Cyberpunk</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="dracula">
+            <span>Dracula</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="nord">
+            <span>Nord</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+          <div class="scheme-item" data-scheme="custom">
+            <span>Custom</span>
+            <div class="scheme-colors">
+              <span class="scheme-color bg-color"></span>
+              <span class="scheme-color text-color"></span>
+              <span class="scheme-color accent-color"></span>
+            </div>
+          </div>
+        </div>
+        <div class="custom-scheme-editor">
+          <h3>Custom Scheme</h3>
+          <div class="color-picker-group">
+            <label for="bgColorPicker">Background</label>
+            <input type="color" id="bgColorPicker" value="#0c0c0c">
+          </div>
+          <div class="color-picker-group">
+            <label for="textColorPicker">Text</label>
+            <input type="color" id="textColorPicker" value="#cccccc">
+          </div>
+          <div class="color-picker-group">
+            <label for="accentColorPicker">Accent</label>
+            <input type="color" id="accentColorPicker" value="#0078d7">
+          </div>
+          <div class="color-picker-group">
+            <label for="selectionColorPicker">Selection</label>
+            <input type="color" id="selectionColorPicker" value="#264f78">
+          </div>
+          <div class="color-picker-group">
+            <label for="errorColorPicker">Error</label>
+            <input type="color" id="errorColorPicker" value="#f14c4c">
+          </div>
+          <div class="color-picker-group">
+            <label for="successColorPicker">Success</label>
+            <input type="color" id="successColorPicker" value="#13a10e">
+          </div>
+        </div>
+      </div>
+      <div class="color-scheme-footer">
+        <button id="applyColorScheme" class="color-scheme-button primary">Apply</button>
+        <button id="exportColorScheme" class="color-scheme-button">Export</button>
+        <button id="importColorScheme" class="color-scheme-button">Import</button>
+      </div>
+    </div>
+
+    <!-- About Panel -->
+    <div class="about-panel" id="aboutPanel">
+      <div class="about-header">
+        <h2>About Advanced Terminal</h2>
+        <button class="close-about" id="closeAbout">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="about-content">
+        <div class="about-logo">
+          <i class="fa-solid fa-terminal"></i>
+        </div>
+        <h3>Advanced Terminal</h3>
+        <p class="version">Version 2.5.0</p>
+        <p class="description">
+          A modern, feature-rich terminal application with real-time commands, advanced styling, and interactive features.
+        </p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>Multiple tabs and panes</li>
+            <li>Custom color schemes with reactive effects</li>
+            <li>Real-time system information</li>
+            <li>Network diagnostics and DNS tools</li>
+            <li>Weather information with visual display</li>
+            <li>Advanced file system operations</li>
+            <li>Command history and intelligent search</li>
+            <li>Particle effects and visual feedback</li>
+            <li>Multiple URL frame viewing options</li>
+            <li>Customizable animations and transitions</li>
+            <li>Advanced accessibility options</li>
+            <li>Performance optimization settings</li>
+          </ul>
+        </div class="updates-fixes">
+          <h4>Updates & Bug Fixes:</h4>
+          <ul>
+            <li>Fixed Some Functions+Commands And Added A Command
+            <li>Corrected Terminal Name To "HTML Terminal" From Windows Terminal Due To Copyright Reasons
+          </ul>
+        <div class="credits">
+          <p>Made by @lime.bat on discord!</p>
+        </div>
+      </div>
+      <div class="about-footer">
+        <button id="closeAboutButton" class="about-button primary">Close</button>
+        <button id="checkUpdatesButton" class="about-button">Check for Updates</button>
+      </div>
+    </div>
+
+    <!-- Tools Panel -->
+    <div class="tools-panel" id="toolsPanel">
+      <div class="tools-header">
+        <h2>Terminal Tools</h2>
+        <button class="close-tools" id="closeTools">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="tools-content">
+        <div class="tools-grid">
+          <div class="tool-card" data-tool="calculator">
+            <div class="tool-icon"><i class="fa-solid fa-calculator"></i></div>
+            <div class="tool-name">Calculator</div>
+          </div>
+          <div class="tool-card" data-tool="weather">
+            <div class="tool-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+            <div class="tool-name">Weather</div>
+          </div>
+          <div class="tool-card" data-tool="network">
+            <div class="tool-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div class="tool-name">Network Tools</div>
+          </div>
+          <div class="tool-card" data-tool="calendar">
+            <div class="tool-icon"><i class="fa-solid fa-calendar"></i></div>
+            <div class="tool-name">Calendar</div>
+          </div>
+          <div class="tool-card" data-tool="notes">
+            <div class="tool-icon"><i class="fa-solid fa-note-sticky"></i></div>
+            <div class="tool-name">Notes</div>
+          </div>
+          <div class="tool-card" data-tool="timer">
+            <div class="tool-icon"><i class="fa-solid fa-stopwatch"></i></div>
+            <div class="tool-name">Timer</div>
+          </div>
+          <div class="tool-card" data-tool="converter">
+            <div class="tool-icon"><i class="fa-solid fa-exchange-alt"></i></div>
+            <div class="tool-name">Unit Converter</div>
+          </div>
+          <div class="tool-card" data-tool="encoder">
+            <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="tool-name">Encoder/Decoder</div>
+          </div>
+          <div class="tool-card" data-tool="colorpicker">
+            <div class="tool-icon"><i class="fa-solid fa-palette"></i></div>
+            <div class="tool-name">Color Picker</div>
+          </div>
+          <div class="tool-card" data-tool="qrcode">
+            <div class="tool-icon"><i class="fa-solid fa-qrcode"></i></div>
+            <div class="tool-name">QR Code Generator</div>
+          </div>
+          <div class="tool-card" data-tool="markdown">
+            <div class="tool-icon"><i class="fa-brands fa-markdown"></i></div>
+            <div class="tool-name">Markdown Preview</div>
+          </div>
+          <div class="tool-card" data-tool="regex">
+            <div class="tool-icon"><i class="fa-solid fa-asterisk"></i></div>
+            <div class="tool-name">Regex Tester</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extensions Panel -->
+    <div class="extensions-panel" id="extensionsPanel">
+      <div class="extensions-header">
+        <h2>Terminal Extensions</h2>
+        <button class="close-extensions" id="closeExtensions">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="extensions-content">
+        <div class="extensions-search">
+          <input type="text" id="extensionsSearch" placeholder="Search extensions...">
+          <button id="searchExtensionsButton"><i class="fa-solid fa-search"></i></button>
+        </div>
+        <div class="extensions-categories">
+          <button class="extension-category active" data-category="all">All</button>
+          <button class="extension-category" data-category="installed">Installed</button>
+          <button class="extension-category" data-category="popular">Popular</button>
+          <button class="extension-category" data-category="themes">Themes</button>
+          <button class="extension-category" data-category="tools">Tools</button>
+          <button class="extension-category" data-category="commands">Commands</button>
+        </div>
+        <div class="extensions-list">
+          <div class="extension-item">
+            <div class="extension-icon"><i class="fa-solid fa-paint-brush"></i></div>
+            <div class="extension-info">
+              <div class="extension-name">Theme Pack</div>
+              <div class="extension-description">Additional terminal themes and color schemes</div>
+              <div class="extension-meta">
+                <span class="extension-author">Terminal Team</span>
+                <span class="extension-version">v1.2.0</span>
+                <span class="extension-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <button class="extension-action">Install</button>
+          </div>
+          <div class="extension-item installed">
+            <div class="extension-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="extension-info">
+              <div class="extension-name">Syntax Highlighter</div>
+              <div class="extension-description">Advanced syntax highlighting for various languages</div>
+              <div class="extension-meta">
+                <span class="extension-author">Code Tools</span>
+                <span class="extension-version">v2.1.3</span>
+                <span class="extension-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <button class="extension-action uninstall">Uninstall</button>
+          </div>
+          <div class="extension-item">
+            <div class="extension-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="extension-info">
+              <div class="extension-name">System Monitor</div>
+              <div class="extension-description">Real-time system resource monitoring</div>
+              <div class="extension-meta">
+                <span class="extension-author">Performance Tools</span>
+                <span class="extension-version">v1.0.5</span>
+                <span class="extension-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+              </div>
+            </div>
+            <button class="extension-action">Install</button>
+          </div>
+          <div class="extension-item">
+            <div class="extension-icon"><i class="fa-solid fa-file-code"></i></div>
+            <div class="extension-info">
+              <div class="extension-name">File Explorer</div>
+              <div class="extension-description">Visual file explorer with preview capabilities</div>
+              <div class="extension-meta">
+                <span class="extension-author">File Tools</span>
+                <span class="extension-version">v1.3.2</span>
+                <span class="extension-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+              </div>
+            </div>
+            <button class="extension-action">Install</button>
+          </div>
+          <div class="extension-item installed">
+            <div class="extension-icon"><i class="fa-solid fa-terminal"></i></div>
+            <div class="extension-info">
+              <div class="extension-name">Command Pack</div>
+              <div class="extension-description">Additional terminal commands and utilities</div>
+              <div class="extension-meta">
+                <span class="extension-author">Terminal Team</span>
+                <span class="extension-version">v2.0.0</span>
+                <span class="extension-rating"><i class="fa-solid fa-star"></i> 5.0</span>
+              </div>
+            </div>
+            <button class="extension-action uninstall">Uninstall</button>
+          </div>
+        </div>
+      </div>
+      <div class="extensions-footer">
+        <button id="refreshExtensions" class="extensions-button"><i class="fa-solid fa-sync"></i> Refresh</button>
+        <button id="uploadExtension" class="extensions-button">Upload Extension</button>
+        <button id="createExtension" class="extensions-button primary">Create Extension</button>
+      </div>
+    </div>
+
+    <!-- Overlay for modals -->
+    <div class="overlay" id="overlay"></div>
+    <div id="particleContainer" class="particle-container"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
