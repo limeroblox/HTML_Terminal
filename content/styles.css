@@ -1,0 +1,3774 @@
+/* ===== RESET & BASE STYLES ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Default Theme (Windows Terminal Dark) */
+  --bg-color: #0c0c0c;
+  --bg-color-transparent: rgba(12, 12, 12, 0.95);
+  --title-bar-bg: #1f1f1f;
+  --tab-bar-bg: #333333;
+  --tab-bg: #252525;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #3a3a3a;
+  --text-color: #cccccc;
+  --text-dim-color: #888888;
+  --accent-color: #0078d7;
+  --accent-hover-color: #1a8fe3;
+  --selection-color: #264f78;
+  --error-color: #f14c4c;
+  --success-color: #13a10e;
+  --warning-color: #ffa500;
+  --info-color: #0078d7;
+  --prompt-color: #16c60c;
+  --command-color: #ffffff;
+  --link-color: #3b9cff;
+  --scrollbar-thumb: #666666;
+  --scrollbar-track: #333333;
+  --border-color: #444444;
+  --dropdown-bg: #2d2d2d;
+  --dropdown-hover-bg: #3e3e3e;
+  --panel-bg: #252525;
+  --panel-header-bg: #333333;
+  --panel-border: #444444;
+  --input-bg: #1e1e1e;
+  --button-bg: #2b2b2b;
+  --button-hover-bg: #3e3e3e;
+  --button-active-bg: #505050;
+  --primary-button-bg: var(--accent-color);
+  --primary-button-hover-bg: var(--accent-hover-color);
+  --primary-button-text: #ffffff;
+  --close-hover-bg: #e81123;
+  --minimize-hover-bg: #333333;
+  --maximize-hover-bg: #333333;
+  --font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+  --font-size: 14px;
+  --line-height: 1.5;
+  --cursor-color: #ffffff;
+  --cursor-width: 2px;
+  --tab-height: 32px;
+  --title-bar-height: 32px;
+  --window-padding: 0;
+  --terminal-padding: 12px;
+  --animation-speed: 0.2s;
+  --border-radius: 0px;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+  
+  /* Particle effects */
+  --particle-color: var(--accent-color);
+  --particle-size: 3px;
+  --particle-speed: 1.5s;
+  
+  /* Glow effects */
+  --glow-color: rgba(0, 120, 215, 0.2);
+  --glow-radius: 20px;
+  --glow-intensity: 0.5;
+  
+  /* Accent color RGB values for calculations */
+  --accent-color-rgb: 0, 120, 215;
+  
+  /* Reactive effects */
+  --ripple-size: 500px;
+  --ripple-duration: 1s;
+  --trail-size: 5px;
+  --trail-duration: 1s;
+  --glow-size: 150px;
+  --glow-opacity: 0.05;
+  
+  /* Sound effects */
+  --typing-volume: 0.3;
+  --bell-volume: 0.5;
+}
+
+/* PowerShell Theme */
+.theme-powershell {
+  --bg-color: #012456;
+  --bg-color-transparent: rgba(1, 36, 86, 0.95);
+  --title-bar-bg: #0a2a66;
+  --tab-bar-bg: #0a3a76;
+  --tab-bg: #0a3270;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #0e3e80;
+  --text-color: #f2f2f2;
+  --text-dim-color: #a0a0a0;
+  --accent-color: #0078d7;
+  --accent-hover-color: #1a8fe3;
+  --selection-color: #264f78;
+  --prompt-color: #f2f2f2;
+  --command-color: #ffffff;
+  --accent-color-rgb: 0, 120, 215;
+  --particle-color: #1a8fe3;
+  --glow-color: rgba(0, 120, 215, 0.2);
+}
+
+/* Ubuntu Theme */
+.theme-ubuntu {
+  --bg-color: #2c001e;
+  --bg-color-transparent: rgba(44, 0, 30, 0.95);
+  --title-bar-bg: #3a0029;
+  --tab-bar-bg: #4a0032;
+  --tab-bg: #3a0029;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #5a003d;
+  --text-color: #eeeeee;
+  --text-dim-color: #a0a0a0;
+  --accent-color: #e95420;
+  --accent-hover-color: #f06b3c;
+  --selection-color: #7a1137;
+  --prompt-color: #eeeeee;
+  --command-color: #ffffff;
+  --accent-color-rgb: 233, 84, 32;
+  --particle-color: #f06b3c;
+  --glow-color: rgba(233, 84, 32, 0.2);
+}
+
+/* Matrix Theme */
+.theme-matrix {
+  --bg-color: #000000;
+  --bg-color-transparent: rgba(0, 0, 0, 0.95);
+  --title-bar-bg: #0a1a0a;
+  --tab-bar-bg: #0a2a0a;
+  --tab-bg: #0a1a0a;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #0a3a0a;
+  --text-color: #00ff00;
+  --text-dim-color: #00aa00;
+  --accent-color: #00cc00;
+  --accent-hover-color: #00ff00;
+  --selection-color: #005500;
+  --prompt-color: #00ff00;
+  --command-color: #00ff00;
+  --accent-color-rgb: 0, 204, 0;
+  --particle-color: #00ff00;
+  --glow-color: rgba(0, 255, 0, 0.2);
+}
+
+/* Light Theme */
+.theme-light {
+  --bg-color: #f2f2f2;
+  --bg-color-transparent: rgba(242, 242, 242, 0.95);
+  --title-bar-bg: #e0e0e0;
+  --tab-bar-bg: #d0d0d0;
+  --tab-bg: #e0e0e0;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #c0c0c0;
+  --text-color: #333333;
+  --text-dim-color: #666666;
+  --accent-color: #0078d7;
+  --accent-hover-color: #1a8fe3;
+  --selection-color: #b5d5ff;
+  --error-color: #d83b01;
+  --success-color: #107c10;
+  --warning-color: #ff8c00;
+  --info-color: #0078d7;
+  --prompt-color: #107c10;
+  --command-color: #000000;
+  --link-color: #0066cc;
+  --scrollbar-thumb: #999999;
+  --scrollbar-track: #e0e0e0;
+  --border-color: #cccccc;
+  --dropdown-bg: #f5f5f5;
+  --dropdown-hover-bg: #e5e5e5;
+  --panel-bg: #f5f5f5;
+  --panel-header-bg: #e0e0e0;
+  --panel-border: #cccccc;
+  --input-bg: #ffffff;
+  --button-bg: #e0e0e0;
+  --button-hover-bg: #d0d0d0;
+  --button-active-bg: #c0c0c0;
+  --primary-button-bg: var(--accent-color);
+  --primary-button-hover-bg: var(--accent-hover-color);
+  --primary-button-text: #ffffff;
+  --close-hover-bg: #e81123;
+  --minimize-hover-bg: #d0d0d0;
+  --maximize-hover-bg: #d0d0d0;
+  --accent-color-rgb: 0, 120, 215;
+  --particle-color: #0078d7;
+  --glow-color: rgba(0, 120, 215, 0.1);
+}
+
+/* Cyberpunk Theme */
+.theme-cyberpunk {
+  --bg-color: #0d0221;
+  --bg-color-transparent: rgba(13, 2, 33, 0.95);
+  --title-bar-bg: #1a0b2e;
+  --tab-bar-bg: #241445;
+  --tab-bg: #1a0b2e;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #2d1657;
+  --text-color: #f0eff1;
+  --text-dim-color: #a0a0a0;
+  --accent-color: #ff2a6d;
+  --accent-hover-color: #ff5a8d;
+  --selection-color: #05d9e8;
+  --error-color: #ff2a6d;
+  --success-color: #01ffc3;
+  --warning-color: #ffe700;
+  --info-color: #05d9e8;
+  --prompt-color: #01ffc3;
+  --command-color: #ffffff;
+  --link-color: #05d9e8;
+  --scrollbar-thumb: #ff2a6d;
+  --scrollbar-track: #1a0b2e;
+  --border-color: #2d1657;
+  --dropdown-bg: #1a0b2e;
+  --dropdown-hover-bg: #2d1657;
+  --panel-bg: #1a0b2e;
+  --panel-header-bg: #241445;
+  --panel-border: #2d1657;
+  --input-bg: #0d0221;
+  --button-bg: #1a0b2e;
+  --button-hover-bg: #2d1657;
+  --button-active-bg: #3a1c70;
+  --primary-button-bg: var(--accent-color);
+  --primary-button-hover-bg: var(--accent-hover-color);
+  --primary-button-text: #ffffff;
+  --close-hover-bg: #ff2a6d;
+  --minimize-hover-bg: #2d1657;
+  --maximize-hover-bg: #2d1657;
+  --accent-color-rgb: 255, 42, 109;
+  --particle-color: #ff2a6d;
+  --glow-color: rgba(255, 42, 109, 0.2);
+}
+
+/* ===== DRACULA THEME ===== */
+.theme-dracula {
+  --bg-color: #282a36;
+  --bg-color-transparent: rgba(40, 42, 54, 0.95);
+  --title-bar-bg: #343746;
+  --tab-bar-bg: #343746;
+  --tab-bg: #343746;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #44475a;
+  --text-color: #f8f8f2;
+  --text-dim-color: #a0a0a0;
+  --accent-color: #bd93f9;
+  --accent-hover-color: #cfa4ff;
+  --selection-color: #44475a;
+  --error-color: #ff5555;
+  --success-color: #50fa7b;
+  --warning-color: #ffb86c;
+  --info-color: #8be9fd;
+  --prompt-color: #50fa7b;
+  --command-color: #f8f8f2;
+  --link-color: #8be9fd;
+  --scrollbar-thumb: #44475a;
+  --scrollbar-track: #282a36;
+  --border-color: #44475a;
+  --dropdown-bg: #343746;
+  --dropdown-hover-bg: #44475a;
+  --panel-bg: #343746;
+  --panel-header-bg: #44475a;
+  --panel-border: #44475a;
+  --input-bg: #282a36;
+  --button-bg: #44475a;
+  --button-hover-bg: #6272a4;
+  --button-active-bg: #6272a4;
+  --primary-button-bg: var(--accent-color);
+  --primary-button-hover-bg: var(--accent-hover-color);
+  --primary-button-text: #282a36;
+  --close-hover-bg: #ff5555;
+  --minimize-hover-bg: #44475a;
+  --maximize-hover-bg: #44475a;
+  --accent-color-rgb: 189, 147, 249;
+  --particle-color: #bd93f9;
+  --glow-color: rgba(189, 147, 249, 0.2);
+}
+
+/* ===== NORD THEME ===== */
+.theme-nord {
+  --bg-color: #2e3440;
+  --bg-color-transparent: rgba(46, 52, 64, 0.95);
+  --title-bar-bg: #3b4252;
+  --tab-bar-bg: #3b4252;
+  --tab-bg: #3b4252;
+  --tab-active-bg: var(--bg-color);
+  --tab-hover-bg: #434c5e;
+  --text-color: #eceff4;
+  --text-dim-color: #aaaaaa;
+  --accent-color: #88c0d0;
+  --accent-hover-color: #8fbcbb;
+  --selection-color: #434c5e;
+  --error-color: #bf616a;
+  --success-color: #a3be8c;
+  --warning-color: #ebcb8b;
+  --info-color: #81a1c1;
+  --prompt-color: #a3be8c;
+  --command-color: #eceff4;
+  --link-color: #81a1c1;
+  --scrollbar-thumb: #4c566a;
+  --scrollbar-track: #3b4252;
+  --border-color: #4c566a;
+  --dropdown-bg: #3b4252;
+  --dropdown-hover-bg: #434c5e;
+  --panel-bg: #3b4252;
+  --panel-header-bg: #434c5e;
+  --panel-border: #4c566a;
+  --input-bg: #2e3440;
+  --button-bg: #434c5e;
+  --button-hover-bg: #4c566a;
+  --button-active-bg: #5e81ac;
+  --primary-button-bg: var(--accent-color);
+  --primary-button-hover-bg: var(--accent-hover-color);
+  --primary-button-text: #2e3440;
+  --close-hover-bg: #bf616a;
+  --minimize-hover-bg: #434c5e;
+  --maximize-hover-bg: #434c5e;
+  --accent-color-rgb: 136, 192, 208;
+  --particle-color: #88c0d0;
+  --glow-color: rgba(136, 192, 208, 0.2);
+}
+
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("https://fonts.gstatic.com/s/cascadiacode/v2/qWcsB6-zq5zxD57cT5s916v3aIH6kjQYug.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  background-color: #1e1e1e;
+  color: var(--text-color);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== TERMINAL CONTAINER ===== */
+.terminal-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 80vh;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+  transition: all var(--animation-speed) ease;
+  z-index: 10;
+}
+
+/* Enhanced reactive background effects */
+.terminal-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Particle container */
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Particle styles */
+.particle {
+  position: absolute;
+  background-color: var(--particle-color);
+  border-radius: 50%;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+  animation: particle-fade var(--particle-speed) ease-out forwards;
+  box-shadow: 0 0 10px var(--particle-color);
+}
+
+@keyframes particle-fade {
+  0% {
+    opacity: 0.6;
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) translate(var(--x, 0px), var(--y, 0px));
+  }
+}
+
+/* Enhanced cursor ripple effect */
+.cursor-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0) 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: ripple-fade var(--ripple-duration) ease-out forwards;
+  mix-blend-mode: screen;
+}
+
+@keyframes ripple-fade {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: var(--ripple-size);
+    height: var(--ripple-size);
+    opacity: 0;
+  }
+}
+
+/* Enhanced cursor trail effect */
+.cursor-trail {
+  position: absolute;
+  width: var(--trail-size);
+  height: var(--trail-size);
+  border-radius: 50%;
+  background-color: var(--particle-color);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  animation: trail-fade var(--trail-duration) ease-out forwards;
+  box-shadow: 0 0 5px var(--particle-color);
+}
+
+@keyframes trail-fade {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* Enhanced cursor glow effect */
+.cursor-glow {
+  position: absolute;
+  width: var(--glow-size);
+  height: var(--glow-size);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--particle-color) 0%, rgba(0, 0, 0, 0) 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: var(--glow-opacity);
+  z-index: 0;
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Command execution effect */
+.command-execute-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.1) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  animation: command-execute 0.5s ease-out;
+}
+
+@keyframes command-execute {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Error effect */
+.error-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, 
+    rgba(241, 76, 76, 0.1) 0%,
+    rgba(241, 76, 76, 0) 70%);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  animation: error-pulse 0.5s ease-out;
+}
+
+@keyframes error-pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Success effect */
+.success-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, 
+    rgba(19, 161, 14, 0.1) 0%,
+    rgba(19, 161, 14, 0) 70%);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  animation: success-pulse 0.5s ease-out;
+}
+
+@keyframes success-pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.terminal-container.maximized {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.terminal-container.minimized {
+  transform: scale(0.1);
+  opacity: 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+/* ===== TITLE BAR ===== */
+.title-bar {
+  height: var(--title-bar-height);
+  background-color: var(--title-bar-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  -webkit-app-region: drag; /* For Electron apps */
+  user-select: none;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enhanced glow effect for the title bar */
+.title-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: title-bar-glow 8s infinite alternate;
+}
+
+@keyframes title-bar-glow {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+.title-bar-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the title bar text */
+.title-bar-text {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the title bar text on hover */
+.title-bar-text:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--glow-color);
+}
+
+/* Enhanced transition for the title bar icon */
+.title-bar-text i {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Add a subtle rotation to the title bar icon on hover */
+.title-bar-text:hover i {
+  color: var(--accent-color);
+  transform: rotate(-10deg);
+}
+
+.title-bar-text i {
+  font-size: 16px;
+}
+
+.window-controls {
+  display: flex;
+  -webkit-app-region: no-drag; /* For Electron apps */
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the window controls */
+.window-controls {
+  transition: opacity 0.3s ease;
+}
+
+.window-control {
+  width: 46px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enhanced hover effect for buttons */
+.window-control:hover,
+.new-tab-button:hover,
+.tab-dropdown-button:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Add a subtle ripple effect to buttons */
+.window-control::after,
+.new-tab-button::after,
+.tab-dropdown-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.window-control:active::after,
+.new-tab-button:active::after,
+.tab-dropdown-button:active::after {
+  animation: button-ripple 0.5s ease-out;
+}
+
+@keyframes button-ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+  }
+}
+
+/* Enhanced transition for the window control icons */
+.window-control i {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Add a subtle rotation to the window control icons on hover */
+.window-control:hover i {
+  transform: scale(1.1);
+}
+
+.window-control:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.window-control.minimize:hover {
+  background-color: var(--minimize-hover-bg);
+}
+
+.window-control.maximize:hover {
+  background-color: var(--maximize-hover-bg);
+}
+
+.window-control.close:hover {
+  background-color: var(--close-hover-bg);
+}
+
+.window-control i {
+  font-size: 12px;
+}
+
+/* ===== TAB BAR ===== */
+.tab-bar {
+  height: var(--tab-height);
+  background-color: var(--tab-bar-bg);
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+/* Add a subtle gradient to the tab bar */
+.tab-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* Enhanced transition for the tab bar */
+.tab-bar {
+  transition: background-color 0.3s ease;
+}
+
+.tabs-container {
+  display: flex;
+  overflow-x: auto;
+  flex-grow: 1;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the tabs container */
+.tabs-container {
+  transition: opacity 0.3s ease;
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.tab {
+  height: calc(var(--tab-height) - 4px);
+  min-width: 120px;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin: 2px 2px 0 0;
+  background-color: var(--tab-bg);
+  color: var(--text-color);
+  border: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Add a subtle gradient to tabs */
+.tab::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* Enhanced transition for the tab */
+.tab {
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced hover effect for tabs */
+.tab:hover:not(.active) {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tab.active {
+  background-color: var(--tab-active-bg);
+  position: relative;
+}
+
+/* Add a subtle glow to the active tab */
+.tab.active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+/* Enhanced transition for the active tab */
+.tab.active {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.tab:hover:not(.active) {
+  background-color: var(--tab-hover-bg);
+}
+
+.tab-icon {
+  margin-right: 8px;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the tab icon */
+.tab-icon {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Add a subtle rotation to the tab icon on hover */
+.tab:hover .tab-icon {
+  color: var(--accent-color);
+  transform: rotate(-10deg);
+}
+
+.tab-title {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the tab title */
+.tab-title {
+  transition: color 0.3s ease;
+}
+
+/* Add a subtle color change to the tab title on hover */
+.tab:hover .tab-title {
+  color: var(--accent-color);
+}
+
+.tab-close {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: 8px;
+  font-size: 12px;
+  opacity: 0.7;
+  transition: opacity var(--animation-speed) ease, background-color var(--animation-speed) ease, transform 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the tab close button */
+.tab-close {
+  transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tab:hover .tab-close {
+  opacity: 1;
+}
+
+.tab-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.new-tab-button,
+.tab-dropdown-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the new tab button */
+.new-tab-button {
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+/* Enhanced transition for the tab dropdown button */
+.tab-dropdown-button {
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.new-tab-button:hover,
+.tab-dropdown-button:hover {
+  background-color: var(--tab-hover-bg);
+  color: var(--accent-color);
+}
+
+.tab-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.tab-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  min-width: 160px;
+  background-color: var(--dropdown-bg);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Enhanced transition for the tab dropdown content */
+.tab-dropdown-content {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: top right;
+}
+
+.tab-dropdown-content a {
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
+  transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.2s ease;
+}
+
+/* Enhanced transition for the tab dropdown content links */
+.tab-dropdown-content a {
+  transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.2s ease;
+}
+
+.tab-dropdown-content a:hover {
+  background-color: var(--dropdown-hover-bg);
+  color: var(--accent-color);
+  padding-left: 20px;
+}
+
+.tab-dropdown:hover .tab-dropdown-content {
+  display: block;
+  animation: dropdown-fade-in 0.2s ease-out forwards;
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== TERMINAL CONTENT ===== */
+.terminal-content {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  z-index: 1;
+}
+
+/* Enhanced transition for the terminal content */
+.terminal-content {
+  transition: background-color 0.3s ease;
+}
+
+/* Enhanced scan line effect */
+.terminal-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.5;
+  animation: scan-lines 10s linear infinite;
+}
+
+@keyframes scan-lines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100px;
+  }
+}
+
+/* Add a subtle noise effect */
+.terminal-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANASURBVGhD7ZhNSFRRFMfPvTOjWZqVH0GYhFiIhLVoEQSBELRwE0QL3bRxE7Ro07JVENGiRQuhqF0fQosIghYKfSBBkR9pGJWVNjrO+HXP/577xmm+5r2ZVw7R/OHw7rn3nHPvf+67H2+GKaWYz5Tg/3nLnBGvmTPiNXNGvGbOiNfMGfGaOSNeM2fEa+aMeM2cEa+ZM+I1c0a8Zs6I18wZ8Zo5I14zZ8Rr5ox4zZwRr5kz4jVzRrxmzojXzBnxmjkjXjNnxGvmjHhNwUYGhoZZz5VbrO/OPZaanGQH9+1hR5oaWUlxsV7jBgUZGR0bZ+c7u9j4xIQOkWg0yloaj7Bjhw/qiBsUZOTpm7ds+OOoDjmxWIxtWL+OVVVWsEhRxI1wKMjIl2/fddRNaWkJi8fjOuIGBRn5+WtMR93E4qU64gYFGSkrLdVRN5OTUzriBgUZ2VRbzWKxmA45SSaTrPPCJZZKpXTEDQoyEo/H2bYtm3XISXd3L0ulUvrJDQo2cvJYM6uqrNAhxvDwCOu5fFOH3KFgI5FIhJ1qO8HKy8t0hLHuK9fZyOiYDrlDwUZIRUU5O3PqJCsvK9MRxpvefpZMJnXEHaZlhKitrWFnTrexyvJyHWHs7v0HbGBwSEfcYdpGiC2bN7HTJ0+wqsoKHWHs8ZOnbHJqSkfcYUZGiD27d7G2E8fZooULdISx/v4B9vzlKx1xhxkbIZqPHGJHDjWwBQsW6AhjT589Z+/eD+iIO8zKCHGouYk1N+5nixct0hHGXvf2sZevX+uIO8zaCLGvYS9raT7IFi9erCOMvXzdy3r7+nTEHVwYIRr272MH9u5hCxcu1BHGegmKu4MLI0Tj/gZWV1fLFixYoCOMdV+6zt4PfNARd3BmhKAYbNu6hS1dulRHGOu6eJkNDg3riDu4NELU1dWy+ro6Fo1GdYSxC51dbGR0VEfcwbkRor6+jm3evIlFIhEdYezqtRvs67fvOuIOszbyt3+Y/vr9m3V0XmBj4+M6wtjHT5/ZtZu3dcQdZmWE/jvS1dPDBj8M6pCTdDrNbt+9z0ZGRnTEHWZlhP7VevT4CXv24qWOOPkDxKt42kgf64EAAAAASUVORK5CYII=");
+  opacity: 0.02;
+  pointer-events: none;
+  animation: noise 0.5s steps(10) infinite;
+}
+
+@keyframes noise {
+  0% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5% -5%;
+  }
+  20% {
+    background-position: 5% 5%;
+  }
+  30% {
+    background-position: -7% 7%;
+  }
+  40% {
+    background-position: 7% -7%;
+  }
+  50% {
+    background-position: -5% 5%;
+  }
+  60% {
+    background-position: 5% -5%;
+  }
+  70% {
+    background-position: -3% 3%;
+  }
+  80% {
+    background-position: 3% -3%;
+  }
+  90% {
+    background-position: -1% 1%;
+  }
+  100% {
+    background-position: 1% -1%;
+  }
+}
+
+.terminal-instance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  padding: var(--terminal-padding);
+  overflow: hidden;
+  z-index: 1; /* Ensure proper stacking */
+}
+
+/* Enhanced transition for the terminal instance */
+.terminal-instance {
+  transition: opacity 0.3s ease;
+}
+
+.terminal-instance.active {
+  display: flex;
+}
+
+/* Enhanced glow effect for the terminal */
+.terminal-instance.active {
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced glow effect for the terminal when focused */
+.terminal-instance.active:focus-within {
+  box-shadow: inset 0 0 50px rgba(var(--accent-color-rgb), 0.1);
+}
+
+.terminal-output {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  z-index: 2;
+  scroll-behavior: smooth;
+}
+
+/* Enhanced transition for the terminal output */
+.terminal-output {
+  transition: color 0.3s ease;
+}
+
+/* Enhanced matrix-like animation for the matrix theme */
+.theme-matrix .terminal-output::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 255, 0, 0.03) 0%, rgba(0, 255, 0, 0.01) 50%, rgba(0, 255, 0, 0) 100%);
+  animation: matrix-scan 8s linear infinite;
+  pointer-events: none;
+}
+
+/* Enhanced cyberpunk animation for the cyberpunk theme */
+.theme-cyberpunk .terminal-output::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 42, 109, 0) 0%, 
+    rgba(255, 42, 109, 0.05) 25%, 
+    rgba(5, 217, 232, 0.05) 50%, 
+    rgba(1, 255, 195, 0.05) 75%, 
+    rgba(255, 42, 109, 0) 100%);
+  animation: cyberpunk-scan 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes matrix-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes cyberpunk-scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.terminal-output::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Enhanced transition for the terminal input line */
+.terminal-input-line {
+  transition: opacity 0.3s ease;
+}
+
+.terminal-prompt {
+  color: var(--prompt-color);
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+/* Enhanced transition for the terminal prompt */
+.terminal-prompt {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the terminal prompt */
+.terminal-input-line:focus-within .terminal-prompt {
+  text-shadow: 0 0 5px var(--prompt-color);
+}
+
+.terminal-input-wrapper {
+  flex-grow: 1;
+  position: relative;
+  min-height: 1.2em;
+  display: flex;
+  align-items: center;
+}
+
+/* Enhanced transition for the terminal input wrapper */
+.terminal-input-wrapper {
+  transition: opacity 0.3s ease;
+}
+
+/* Enhanced terminal input styling */
+.terminal-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--command-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  outline: none;
+  caret-color: transparent; /* Hide default cursor */
+  position: relative;
+  z-index: 5; /* Ensure input is above other elements */
+}
+
+/* Enhanced transition for the terminal input */
+.terminal-input {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the terminal input when focused */
+.terminal-input:focus {
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced cursor styling */
+.terminal-cursor {
+  position: absolute;
+  width: var(--cursor-width);
+  height: 1.2em;
+  background-color: var(--cursor-color);
+  animation: blink 1s steps(2, start) infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 1px;
+  z-index: 4;
+}
+
+/* Enhanced glow for the cursor */
+.terminal-cursor {
+  box-shadow: 0 0 5px var(--cursor-color);
+}
+
+/* Enhanced transition for the terminal cursor */
+.terminal-cursor {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-no-blink {
+  animation: none;
+  opacity: 1;
+}
+
+/* Terminal output styling */
+.output-line {
+  margin-bottom: 2px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Add a subtle hover effect to output lines */
+.output-line:hover {
+  transform: translateX(2px);
+  color: var(--accent-color);
+}
+
+/* Enhanced transition for the output line */
+.output-line {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.output-command {
+  color: var(--command-color);
+  font-weight: 500;
+}
+
+/* Enhanced transition for the output command */
+.output-command {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the output command on hover */
+.output-command:hover {
+  text-shadow: 0 0 5px var(--command-color);
+}
+
+/* Enhanced styles for the custom symbols in the output */
+.output-error {
+  color: var(--error-color);
+  font-weight: 500;
+  position: relative;
+}
+
+.output-error::before {
+  content: "⮾ ";
+  color: var(--error-color);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--error-color);
+}
+
+.output-success {
+  color: var(--success-color);
+  font-weight: 500;
+  position: relative;
+}
+
+.output-success::before {
+  content: "✓ ";
+  color: var(--success-color);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--success-color);
+}
+
+.output-warning {
+  color: var(--warning-color);
+  font-weight: 500;
+  position: relative;
+}
+
+.output-warning::before {
+  content: "⚠ " ;
+  color: var(--warning-color);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--warning-color);
+}
+
+.output-info {
+  color: var(--info-color);
+  font-weight: 500;
+  position: relative;
+}
+
+.output-info::before {
+  content: "ⓘ ";
+  color: var(--info-color);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--info-color);
+}
+
+.output-link {
+  color: var(--link-color);
+  text-decoration: underline;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Enhanced transition for the output link */
+.output-link {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the output link on hover */
+.output-link:hover {
+  color: var(--accent-hover-color);
+  text-shadow: 0 0 5px var(--link-color);
+}
+
+.output-bold {
+  font-weight: bold;
+}
+
+/* Enhanced transition for the output bold */
+.output-bold {
+  transition: color 0.3s ease;
+}
+
+.output-italic {
+  font-style: italic;
+}
+
+/* Enhanced transition for the output italic */
+.output-italic {
+  transition: color 0.3s ease;
+}
+
+.output-underline {
+  text-decoration: underline;
+}
+
+/* Enhanced transition for the output underline */
+.output-underline {
+  transition: color 0.3s ease;
+}
+
+/* ===== SETTINGS PANEL ===== */
+.settings-panel,
+.color-scheme-panel,
+.about-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 80%;
+  max-width: 700px;
+  max-height: 80vh;
+  background-color: var(--panel-bg);
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--animation-speed) ease;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+}
+
+/* Enhanced transition for the settings panel */
+.settings-panel,
+.color-scheme-panel,
+.about-panel {
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the panels */
+.settings-panel.active,
+.color-scheme-panel.active,
+.about-panel.active {
+  box-shadow: 0 15px 35px rgba(var(--accent-color-rgb), 0.2);
+}
+
+.settings-panel.active,
+.color-scheme-panel.active,
+.about-panel.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.settings-header,
+.color-scheme-header,
+.about-header {
+  padding: 16px;
+  background-color: var(--panel-header-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--panel-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle gradient to the panel headers */
+.settings-header::after,
+.color-scheme-header::after,
+.about-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: header-glow 8s infinite alternate;
+}
+
+@keyframes header-glow {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced transition for the settings header */
+.settings-header,
+.color-scheme-header,
+.about-header {
+  transition: background-color 0.3s ease;
+}
+
+.settings-header h2,
+.color-scheme-header h2,
+.about-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the settings header title */
+.settings-header h2,
+.color-scheme-header h2,
+.about-header h2 {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the header titles */
+.settings-header h2:hover,
+.color-scheme-header h2:hover,
+.about-header h2:hover {
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.close-settings,
+.close-color-scheme,
+.close-about {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the close settings button */
+.close-settings,
+.close-color-scheme,
+.close-about {
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.close-settings:hover,
+.close-color-scheme:hover,
+.close-about:hover {
+  background-color: var(--button-hover-bg);
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+.settings-content,
+.color-scheme-content,
+.about-content {
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(80vh - 130px);
+}
+
+/* Enhanced transition for the settings content */
+.settings-content,
+.color-scheme-content,
+.about-content {
+  transition: opacity 0.3s ease;
+}
+
+.settings-section {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* Add a subtle hover effect to settings sections */
+.settings-section:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.05);
+  border-radius: 4px;
+}
+
+/* Enhanced transition for the settings section */
+.settings-section {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.settings-section h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--text-color);
+  font-weight: 600;
+  position: relative;
+}
+
+/* Add a subtle accent to section titles */
+.settings-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.settings-section:hover h3::after {
+  width: 100px;
+}
+
+/* Enhanced transition for the settings section title */
+.settings-section h3 {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the section titles on hover */
+.settings-section:hover h3 {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.setting-item {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Add a subtle hover effect to setting items */
+.setting-item:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.05);
+  border-radius: 4px;
+}
+
+/* Enhanced transition for the setting item */
+.setting-item {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.setting-item label {
+  flex: 0 0 150px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* Enhanced transition for the setting item label */
+.setting-item label {
+  transition: color 0.3s ease;
+}
+
+/* Add a subtle color change to labels on hover */
+.setting-item:hover label {
+  color: var(--accent-color);
+}
+
+.setting-item select,
+.setting-item input[type="text"],
+.setting-item input[type="number"] {
+  flex-grow: 1;
+  padding: 8px 12px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced transition for the settings input */
+.setting-item select,
+.setting-item input[type="text"],
+.setting-item input[type="number"] {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to inputs on focus */
+.setting-item select:focus,
+.setting-item input[type="text"]:focus,
+.setting-item input[type="number"]:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+  outline: none;
+}
+
+.setting-item input[type="range"] {
+  flex-grow: 1;
+  margin-right: 10px;
+  accent-color: var(--accent-color);
+}
+
+.setting-item.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.setting-item.checkbox input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: var(--accent-color);
+}
+
+.setting-item.checkbox label {
+  flex: 1;
+}
+
+.color-schemes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Enhanced transition for the color schemes */
+.color-schemes {
+  transition: opacity 0.3s ease;
+}
+
+.color-scheme-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease;
+}
+
+/* Enhanced transition for the color scheme item */
+.color-scheme-item {
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Add a subtle hover effect to color scheme items */
+.color-scheme-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.color-preview {
+  width: 60px;
+  height: 40px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced transition for the color preview */
+.color-preview {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.color-preview:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.5);
+}
+
+.color-preview::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.default-scheme {
+  background-color: #0c0c0c;
+}
+
+.default-scheme::after {
+  background-color: #0078d7;
+}
+
+.powershell-scheme {
+  background-color: #012456;
+}
+
+.powershell-scheme::after {
+  background-color: #0078d7;
+}
+
+.ubuntu-scheme {
+  background-color: #2c001e;
+}
+
+.ubuntu-scheme::after {
+  background-color: #e95420;
+}
+
+.matrix-scheme {
+  background-color: #000000;
+}
+
+.matrix-scheme::after {
+  background-color: #00ff00;
+}
+
+.light-scheme {
+  background-color: #f2f2f2;
+}
+
+.light-scheme::after {
+  background-color: #0078d7;
+}
+
+.cyberpunk-scheme {
+  background-color: #0d0221;
+}
+
+.cyberpunk-scheme::after {
+  background-color: #ff2a6d;
+}
+
+.settings-footer,
+.color-scheme-footer,
+.about-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid var(--panel-border);
+  position: relative;
+}
+
+/* Add a subtle gradient to the panel footers */
+.settings-footer::after,
+.color-scheme-footer::after,
+.about-footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: footer-glow 8s infinite alternate;
+}
+
+@keyframes footer-glow {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+}
+
+/* Enhanced transition for the settings footer */
+.settings-footer,
+.color-scheme-footer,
+.about-footer {
+  transition: background-color 0.3s ease;
+}
+
+.settings-button,
+.color-scheme-button,
+.about-button {
+  padding: 8px 16px;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Add a subtle ripple effect to buttons */
+.settings-button::after,
+.color-scheme-button::after,
+.about-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.settings-button:active::after,
+.color-scheme-button:active::after,
+.about-button:active::after {
+  animation: button-ripple 0.5s ease-out;
+}
+
+/* Enhanced transition for the settings button */
+.settings-button,
+.color-scheme-button,
+.about-button {
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+/* Add a subtle hover effect to buttons */
+.settings-button:hover,
+.color-scheme-button:hover,
+.about-button:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.settings-button.primary,
+.color-scheme-button.primary,
+.about-button.primary {
+  background-color: var(--primary-button-bg);
+  color: var(--primary-button-text);
+}
+
+.settings-button.primary:hover,
+.color-scheme-button.primary:hover,
+.about-button.primary:hover {
+  background-color: var(--primary-button-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.5);
+}
+
+/* ===== COLOR SCHEME PANEL ===== */
+.scheme-preview {
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle scan line effect to the scheme preview */
+.scheme-preview::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Enhanced transition for the scheme preview */
+.scheme-preview {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the scheme preview on hover */
+.scheme-preview:hover {
+  box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.scheme-preview-terminal {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the scheme preview terminal */
+.scheme-preview-terminal {
+  transition: color 0.3s ease;
+}
+
+.preview-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* Enhanced transition for the preview line */
+.preview-line {
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+/* Add a subtle hover effect to preview lines */
+.preview-line:hover {
+  transform: translateX(2px);
+}
+
+.preview-prompt {
+  color: var(--prompt-color);
+  margin-right: 8px;
+}
+
+/* Enhanced transition for the preview prompt */
+.preview-prompt {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the preview prompt on hover */
+.preview-line:hover .preview-prompt {
+  text-shadow: 0 0 5px var(--prompt-color);
+}
+
+.preview-command {
+  color: var(--command-color);
+}
+
+/* Enhanced transition for the preview command */
+.preview-command {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the preview command on hover */
+.preview-line:hover .preview-command {
+  text-shadow: 0 0 5px var(--command-color);
+}
+
+.preview-output {
+  margin: 8px 0;
+  padding-left: 16px;
+}
+
+/* Enhanced transition for the preview output */
+.preview-output {
+  transition: opacity 0.3s ease;
+}
+
+.preview-directory {
+  color: var(--info-color);
+  margin-bottom: 4px;
+}
+
+/* Enhanced transition for the preview directory */
+.preview-directory {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the preview directory on hover */
+.preview-directory:hover {
+  text-shadow: 0 0 5px var(--info-color);
+}
+
+.preview-file {
+  color: var(--text-color);
+  margin-bottom: 2px;
+}
+
+/* Enhanced transition for the preview file */
+.preview-file {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Add a subtle hover effect to preview files */
+.preview-file:hover {
+  transform: translateX(2px);
+  color: var(--accent-color);
+}
+
+.preview-folder {
+  color: var(--accent-color);
+  margin-bottom: 2px;
+}
+
+/* Enhanced transition for the preview folder */
+.preview-folder {
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Add a subtle hover effect to preview folders */
+.preview-folder:hover {
+  transform: translateX(2px);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.preview-cursor {
+  width: var(--cursor-width);
+  height: 1.2em;
+  background-color: var(--cursor-color);
+  display: inline-block;
+  animation: blink 1s steps(2, start) infinite;
+  box-shadow: 0 0 5px var(--cursor-color);
+}
+
+/* Enhanced transition for the preview cursor */
+.preview-cursor {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scheme-list {
+  margin-bottom: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.scheme-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scheme-list::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.scheme-list::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.scheme-list::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Enhanced transition for the scheme list */
+.scheme-list {
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the scheme list on hover */
+.scheme-list:hover {
+  box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.scheme-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle hover effect to scheme items */
+.scheme-item:hover {
+  transform: translateX(5px);
+}
+
+/* Add a subtle gradient to scheme items */
+.scheme-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scheme-item:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced transition for the scheme item */
+.scheme-item {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.scheme-item:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.scheme-item:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.scheme-item.active {
+  background-color: var(--selection-color);
+  position: relative;
+}
+
+/* Add a subtle indicator to the active scheme item */
+.scheme-item.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+.scheme-colors {
+  display: flex;
+  gap: 6px;
+}
+
+/* Enhanced transition for the scheme colors */
+.scheme-colors {
+  transition: opacity 0.3s ease;
+}
+
+.scheme-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced transition for the scheme color */
+.scheme-color {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.scheme-color:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 5px currentColor;
+}
+
+.scheme-color.bg-color {
+  background-color: var(--bg-color);
+}
+
+.scheme-color.text-color {
+  background-color: var(--text-color);
+}
+
+.scheme-color.accent-color {
+  background-color: var(--accent-color);
+}
+
+.custom-scheme-editor {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: var(--input-bg);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle gradient to the custom scheme editor */
+.custom-scheme-editor::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(var(--accent-color-rgb), 0.05) 0%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+}
+
+/* Enhanced transition for the custom scheme editor */
+.custom-scheme-editor {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the custom scheme editor on hover */
+.custom-scheme-editor:hover {
+  box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.custom-scheme-editor h3 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add a subtle accent to the custom scheme editor title */
+.custom-scheme-editor h3::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.custom-scheme-editor:hover h3::after {
+  width: 100px;
+}
+
+/* Enhanced transition for the custom scheme editor title */
+.custom-scheme-editor h3 {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the custom scheme editor title on hover */
+.custom-scheme-editor:hover h3 {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.color-picker-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add a subtle hover effect to color picker groups */
+.color-picker-group:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.05);
+  border-radius: 4px;
+}
+
+.color-picker-group label {
+  flex: 0 0 100px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+/* Add a subtle color change to color picker labels on hover */
+.color-picker-group:hover label {
+  color: var(--accent-color);
+}
+
+.color-picker-group input[type="color"] {
+  width: 40px;
+  height: 24px;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced transition for the color picker */
+.color-picker-group input[type="color"] {
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.color-picker-group input[type="color"]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+  border-color: var(--accent-color);
+}
+
+/* ===== ABOUT PANEL ===== */
+.about-content {
+  text-align: center;
+  padding: 24px;
+}
+
+/* Enhanced transition for the about content */
+.about-content {
+  transition: opacity 0.3s ease;
+}
+
+.about-logo {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-color);
+  animation: logo-pulse 3s infinite alternate;
+}
+
+@keyframes logo-pulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 10px var(--accent-color);
+  }
+  100% {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px var(--accent-color);
+  }
+}
+
+/* Enhanced transition for the about logo */
+.about-logo {
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.about-logo:hover {
+  transform: scale(1.2) rotate(10deg);
+  color: var(--accent-hover-color);
+  text-shadow: 0 0 20px var(--accent-hover-color);
+}
+
+.about-content h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+/* Add a subtle accent to the about content title */
+.about-content h3::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.5s ease;
+}
+
+.about-content h3:hover::after {
+  width: 100%;
+}
+
+/* Enhanced transition for the about content title */
+.about-content h3 {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the about content title on hover */
+.about-content h3:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.version {
+  font-size: 14px;
+  color: var(--text-dim-color);
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Add a subtle hover effect to the version */
+.version::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.version:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Enhanced transition for the version */
+.version {
+  transition: color 0.3s ease;
+}
+
+/* Add a subtle color change to the version on hover */
+.version:hover {
+  color: var(--accent-color);
+}
+
+.description {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  position: relative;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Add a subtle hover effect to the description */
+.description:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.05);
+}
+
+/* Enhanced transition for the description */
+.description {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.features {
+  text-align: left;
+  margin-bottom: 24px;
+  padding: 10px;
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Add a subtle hover effect to the features */
+.features:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.05);
+}
+
+/* Enhanced transition for the features */
+.features {
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.features h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+/* Add a subtle accent to the features title */
+.features h4::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.features h4:hover::after {
+  width: 100%;
+}
+
+/* Enhanced transition for the features title */
+.features h4 {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the features title on hover */
+.features h4:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.features ul {
+  list-style-type: none;
+  padding-left: 16px;
+}
+
+/* Enhanced transition for the features list */
+.features ul {
+  transition: opacity 0.3s ease;
+}
+
+.features li {
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 20px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+/* Enhanced transition for the features list */
+.features li {
+  transition: transform 0.2s ease, color 0.3s ease, padding-left 0.2s ease;
+}
+
+.features li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.features li:hover {
+  transform: translateX(5px);
+  color: var(--accent-color);
+  padding-left: 25px;
+}
+
+.features li:hover::before {
+  transform: scale(1.2);
+  color: var(--accent-hover-color);
+}
+
+/* Updates Part */
+
+.updates-fixes {
+  text-align: left;
+  margin-bottom: 24px;
+  padding: 10px;
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Add a subtle hover effect to the features */
+.updates-fixes:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.05);
+}
+
+/* Enhanced transition for the features */
+.updates-fixes {
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.updates-fixes h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+/* Add a subtle accent to the features title */
+.updates-fixes h4::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.updates-fixes h4:hover::after {
+  width: 100%;
+}
+
+/* Enhanced transition for the features title */
+
+.updates-fixes h4 {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the features title on hover */
+.update-fixes h4:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.updates-fixes ul {
+  list-style-type: none;
+  padding-left: 16px;
+}
+
+/* Enhanced transition for the features list */
+.updates-fixes ul {
+  transition: opacity 0.3s ease;
+}
+
+.updates-fixes li {
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 20px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+/* Enhanced transition for the features list */
+.updates-fixes li {
+  transition: transform 0.2s ease, color 0.3s ease, padding-left 0.2s ease;
+}
+
+.updates-fixes li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.updates-fixes li:hover {
+  transform: translateX(5px);
+  color: var(--accent-color);
+  padding-left: 25px;
+}
+
+.updates-fixes li:hover::before {
+  transform: scale(1.2);
+  color: var(--accent-hover-color);
+}
+
+/* ///////////// */
+
+.credits {
+  font-size: 14px;
+  color: var(--text-dim-color);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Add a subtle hover effect to the credits */
+.credits:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.05);
+}
+
+/* Enhanced transition for the credits */
+.credits p {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.credits p {
+  margin-bottom: 4px;
+}
+
+.credits p:hover {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-bg);
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--animation-speed) ease;
+  backdrop-filter: blur(3px);
+}
+
+/* Enhanced transition for the overlay */
+.overlay {
+  transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== IFRAME ===== */
+.iframe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  animation: iframe-fade-in 0.3s ease-out forwards;
+}
+
+@keyframes iframe-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced transition for the iframe container */
+.iframe-container {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.iframe-header {
+  height: 40px;
+  background-color: var(--title-bar-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle gradient to the iframe header */
+.iframe-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: iframe-header-glow 8s infinite alternate;
+}
+
+@keyframes iframe-header-glow {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced transition for the iframe header */
+.iframe-header {
+  transition: background-color 0.3s ease;
+}
+
+.iframe-title {
+  font-size: 14px;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the iframe title */
+.iframe-title {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Add a subtle glow to the iframe title on hover */
+.iframe-title:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.iframe-close {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced transition for the iframe close button */
+.iframe-close {
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.iframe-close:hover {
+  background-color: var(--close-hover-bg);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.iframe-content {
+  flex-grow: 1;
+  border: none;
+}
+
+/* Enhanced transition for the iframe content */
+.iframe-content {
+  transition: opacity 0.3s ease;
+}
+
+/* Browser UI styles */
+.browser-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-header {
+  height: 60px;
+  background-color: var(--title-bar-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle gradient to the browser header */
+.browser-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: browser-header-glow 8s infinite alternate;
+}
+
+@keyframes browser-header-glow {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+.browser-controls {
+  display: flex;
+  gap: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.browser-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle ripple effect to browser buttons */
+.browser-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.browser-button:active::after {
+  animation: button-ripple 0.5s ease-out;
+}
+
+.browser-button:hover {
+  background-color: var(--button-hover-bg);
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.browser-address-bar {
+  flex-grow: 1;
+  margin: 0 10px;
+  background-color: var(--input-bg);
+  border-radius: 4px;
+  padding: 0 10px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add a subtle glow to the address bar on focus */
+.browser-address-bar:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+}
+
+.browser-address-input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 14px;
+  outline: none;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .terminal-container {
+    height: 90vh;
+  }
+
+  .tab {
+    min-width: 100px;
+  }
+
+  .settings-panel,
+  .color-scheme-panel,
+  .about-panel {
+    width: 95%;
+  }
+
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .setting-item label {
+    margin-bottom: 8px;
+  }
+
+  .color-schemes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-title {
+    max-width: 60px;
+  }
+
+  .terminal-prompt {
+    font-size: 12px;
+  }
+
+  .settings-content,
+  .color-scheme-content,
+  .about-content {
+    padding: 12px;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--animation-speed) ease forwards;
+}
+
+.slide-in {
+  animation: slideIn var(--animation-speed) ease forwards;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.hidden {
+  display: none !important;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.p-2 {
+  padding: 8px;
+}
+
+.text-sm {
+  font-size: 14px;
+}
+
+.text-xs {
+  font-size: 12px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-error {
+  color: var(--error-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-warning {
+  color: var(--warning-color);
+}
+
+.text-info {
+  color: var(--info-color);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.border {
+  border: 1px solid var(--border-color);
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.transition {
+  transition: all var(--animation-speed) ease;
+}
+
+/* ===== SELECTION STYLING ===== */
+::selection {
+  background-color: var(--selection-color);
+  color: var(--text-color);
+}
+
+/* ===== TOOLS PANEL ===== */
+.tools-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 80%;
+  max-width: 700px;
+  max-height: 80vh;
+  background-color: var(--panel-bg);
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--animation-speed) ease;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+}
+
+.tools-panel.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+  box-shadow: 0 15px 35px rgba(var(--accent-color-rgb), 0.2);
+}
+
+.tools-header {
+  padding: 16px;
+  background-color: var(--panel-header-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--panel-border);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.tools-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: header-glow 8s infinite alternate;
+}
+
+.tools-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.tools-header h2:hover {
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.close-tools {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.close-tools:hover {
+  background-color: var(--button-hover-bg);
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+.tools-content {
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(80vh - 130px);
+  transition: opacity 0.3s ease;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.tool-card {
+  background-color: var(--input-bg);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(var(--accent-color-rgb), 0.05) 0%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.2);
+  background-color: var(--button-hover-bg);
+}
+
+.tool-card:hover::after {
+  opacity: 1;
+}
+
+.tool-icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--accent-color);
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.tool-card:hover .tool-icon {
+  transform: scale(1.2);
+  color: var(--accent-hover-color);
+  text-shadow: 0 0 10px var(--accent-color);
+}
+
+.tool-name {
+  font-size: 14px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.tool-card:hover .tool-name {
+  color: var(--accent-color);
+}
+
+/* ===== EXTENSIONS PANEL ===== */
+.extensions-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 80%;
+  max-width: 700px;
+  max-height: 80vh;
+  background-color: var(--panel-bg);
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--animation-speed) ease;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+}
+
+.extensions-panel.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+  box-shadow: 0 15px 35px rgba(var(--accent-color-rgb), 0.2);
+}
+
+.extensions-header {
+  padding: 16px;
+  background-color: var(--panel-header-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--panel-border);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.extensions-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: header-glow 8s infinite alternate;
+}
+
+.extensions-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.extensions-header h2:hover {
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.close-extensions {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.close-extensions:hover {
+  background-color: var(--button-hover-bg);
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+.extensions-content {
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(80vh - 180px);
+  transition: opacity 0.3s ease;
+}
+
+.extensions-search {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.extensions-search input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px 0 0 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.extensions-search input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+  outline: none;
+}
+
+.extensions-search button {
+  padding: 8px 12px;
+  background-color: var(--button-bg);
+  border: 1px solid var(--border-color);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.extensions-search button:hover {
+  background-color: var(--button-hover-bg);
+  color: var(--accent-color);
+}
+
+.extensions-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.extension-category {
+  padding: 6px 12px;
+  background-color: var(--button-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.extension-category:hover {
+  background-color: var(--button-hover-bg);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.extension-category.active {
+  background-color: var(--accent-color);
+  color: var(--primary-button-text);
+  border-color: var(--accent-color);
+}
+
+.extensions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.extension-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: var(--input-bg);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.extension-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--button-hover-bg);
+}
+
+.extension-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button-bg);
+  border-radius: 8px;
+  margin-right: 12px;
+  font-size: 20px;
+  color: var(--accent-color);
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.extension-item:hover .extension-icon {
+  transform: scale(1.1);
+  color: var(--accent-hover-color);
+  background-color: var(--button-hover-bg);
+}
+
+.extension-info {
+  flex-grow: 1;
+  margin-right: 12px;
+}
+
+.extension-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.extension-item:hover .extension-name {
+  color: var(--accent-color);
+}
+
+.extension-description {
+  font-size: 14px;
+  color: var(--text-dim-color);
+  margin-bottom: 8px;
+}
+
+.extension-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-dim-color);
+}
+
+.extension-author, .extension-version, .extension-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.extension-rating i {
+  color: var(--warning-color);
+}
+
+.extension-action {
+  padding: 6px 12px;
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--primary-button-text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.extension-action:hover {
+  background-color: var(--accent-hover-color);
+  transform: scale(1.05);
+}
+
+.extension-action.uninstall {
+  background-color: var(--error-color);
+}
+
+.extension-action.uninstall:hover {
+  background-color: #ff6b6b;
+}
+
+.extension-item.installed {
+  border-left: 3px solid var(--success-color);
+}
+
+.extensions-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid var(--panel-border);
+  position: relative;
+}
+
+.extensions-footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(var(--accent-color-rgb), 0) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0) 100%);
+  pointer-events: none;
+  animation: footer-glow 8s infinite alternate;
+}
+
+.extensions-button {
+  padding: 8px 16px;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color var(--animation-speed) ease, transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.extensions-button:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.extensions-button.primary {
+  background-color: var(--primary-button-bg);
+  color: var(--primary-button-text);
+}
+
+.extensions-button.primary:hover {
+  background-color: var(--primary-button-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.5);
+}
