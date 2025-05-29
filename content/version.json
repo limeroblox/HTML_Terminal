@@ -1,3 +1,8 @@
 {
-  "version": "2.5.7"
+  "version": "2.5.7",
+  "files": {
+    "index.html": "sha256-abcdef123456...",
+    "styles.css": "sha256-7890fedcba...",
+    "script.js": "sha256-deadbeef1234..."
+  }
 }
